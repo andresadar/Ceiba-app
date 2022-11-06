@@ -22,7 +22,7 @@ class _UserPostsState extends ConsumerState<_UserPosts> {
 
         ///Error al cargar los datos
         if (snapshot.hasError || snapshot.data == null) {
-          return Center(child: Text(snapshot.error.toString()));
+          return const ErrorView(message: 'Revisa tu conexión');
         }
 
         final posts = snapshot.data as List<PostModel>;

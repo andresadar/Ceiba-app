@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:ceiba_app/app/routes.dart';
 import 'package:ceiba_app/ui/screens/users/users_controller.dart';
 import 'package:ceiba_app/ui/screens/users/users_state.dart';

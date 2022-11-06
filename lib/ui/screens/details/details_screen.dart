@@ -1,6 +1,7 @@
 import 'package:ceiba_app/data/models/post_model.dart';
 import 'package:ceiba_app/data/models/user_model.dart';
 import 'package:ceiba_app/ui/screens/details/details_controller.dart';
+import 'package:ceiba_app/ui/widgets/error.dart';
 import 'package:ceiba_app/ui/widgets/icon_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
