@@ -23,8 +23,14 @@ class UserService {
     final response = await _dio.get('/users');
 
     if (response.statusCode == 200) {
-      final users = response.data as List;
-      return users.map<UserModel>((user) => UserModel.fromJson(user)).toList();
+      final usersData = response.data as List;
+
+      final users = usersData.map((user) => UserModel.fromJson(user)).toList();
+
+      await Future.wait(
+          [_databaseServices.resetUsers(), _databaseServices.saveUsers(users)]);
+
+      return users;
     } else {
       throw Exception('Error al obtener los usuarios');
     }

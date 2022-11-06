@@ -1,12 +1,33 @@
+import 'package:hive_flutter/hive_flutter.dart';
+
+part 'user_model.g.dart';
+
 ///[UserModel] es la clase que contiene el modelo de usuario de la aplicación
-class UserModel {
+
+@HiveType(typeId: 0)
+class UserModel extends HiveObject {
+  @HiveField(0)
   int? id;
+
+  @HiveField(1)
   String? name;
+
+  @HiveField(2)
   String? username;
+
+  @HiveField(3)
   String? email;
+
+  @HiveField(4)
   Address? address;
+
+  @HiveField(5)
   String? phone;
+
+  @HiveField(6)
   String? website;
+
+  @HiveField(7)
   Company? company;
 
   UserModel(
@@ -51,11 +72,21 @@ class UserModel {
 }
 
 ///[Address] es la clase que contiene el modelo de dirección de la aplicación
-class Address {
+@HiveType(typeId: 1)
+class Address extends HiveObject {
+  @HiveField(0)
   String? street;
+
+  @HiveField(1)
   String? suite;
+
+  @HiveField(2)
   String? city;
+
+  @HiveField(3)
   String? zipcode;
+
+  @HiveField(4)
   Geo? geo;
 
   Address({this.street, this.suite, this.city, this.zipcode, this.geo});
@@ -82,8 +113,12 @@ class Address {
 }
 
 ///[Geo] es la clase que contiene el modelo de geolocalización de la aplicación
-class Geo {
+@HiveType(typeId: 2)
+class Geo extends HiveObject {
+  @HiveField(0)
   String? lat;
+
+  @HiveField(1)
   String? lng;
 
   Geo({this.lat, this.lng});
@@ -101,9 +136,16 @@ class Geo {
   }
 }
 
+///[Company] es la clase que contiene el modelo de compañía de la aplicación
+@HiveType(typeId: 3)
 class Company {
+  @HiveField(0)
   String? name;
+
+  @HiveField(1)
   String? catchPhrase;
+
+  @HiveField(2)
   String? bs;
 
   Company({this.name, this.catchPhrase, this.bs});
