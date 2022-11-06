@@ -1,19 +1,12 @@
 import 'package:ceiba_app/app/resource.dart';
 import 'package:ceiba_app/data/models/user_model.dart';
-import 'package:ceiba_app/data/services/database_services.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-///[UserServices] es la clase que contiene los servicios de la aplicación
+///[UsersServices] es la clase que contiene los servicios de la aplicación
 ///comunicándose con la API de la aplicación
 ///Comunicandose con la base de datos local de la aplicación
-class UserService {
-  ///[UserService] es el constructor de la clase
-  UserService(this._databaseServices);
-
-  ///[DatabaseServices] es el servicio de la base de datos local de la aplicación
-  final DatabaseServices _databaseServices;
-
+class UsersServices {
   ///[_dio] es el cliente de la API de la aplicación
   final _dio = Dio(
       BaseOptions(baseUrl: Resource.apiURL, contentType: 'application/json'));
@@ -26,9 +19,6 @@ class UserService {
       final usersData = response.data as List;
 
       final users = usersData.map((user) => UserModel.fromJson(user)).toList();
-
-      await Future.wait(
-          [_databaseServices.resetUsers(), _databaseServices.saveUsers(users)]);
 
       return users;
     } else {
@@ -48,5 +38,4 @@ class UserService {
   }
 }
 
-final userServicesProvider = Provider.autoDispose(
-    (ref) => UserService(ref.read(databaseServicesProvider)));
+final usersServicesProvider = Provider.autoDispose((ref) => UsersServices());
